@@ -201,6 +201,11 @@
                     <newName>${env.DOCKER_REGISTRY_IP}:5000/${project.artifactId}</newName>
 
                     <imageName>${project.artifactId}</imageName>
+                    <forceTags>true</forceTags>
+                    <imageTags>
+                        <imageTag>${scmBranch}</imageTag>
+                        <imageTag>${current-version}</imageTag>
+                    </imageTags>
                     <dockerDirectory>.</dockerDirectory>
                     <dockerHost>http://${env.DOCKER_IP}:2375</dockerHost>
                     <resources>
@@ -220,26 +225,26 @@
                             <goal>tag</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>branch tag</id>
-                        <configuration>
-                            <newName>${scmBranch}</newName>
-                        </configuration>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>tag</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>version tag</id>
-                        <configuration>
-                            <newName>${current-version}</newName>
-                        </configuration>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>tag</goal>
-                        </goals>
-                    </execution>
+<!--                    <execution>-->
+<!--                        <id>branch tag</id>-->
+<!--                        <configuration>-->
+<!--                            <newName>${scmBranch}</newName>-->
+<!--                        </configuration>-->
+<!--                        <phase>deploy</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>tag</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>version tag</id>-->
+<!--                        <configuration>-->
+<!--                            <newName>${current-version}</newName>-->
+<!--                        </configuration>-->
+<!--                        <phase>deploy</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>tag</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
                     <execution>
                         <id>push image</id>
                         <configuration>
