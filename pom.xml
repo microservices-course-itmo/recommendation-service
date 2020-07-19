@@ -218,15 +218,15 @@
 
                 <executions>
                     <execution>
-                        <id>docker image build</id>
+                        <id>build-image</id>
                         <phase>package</phase>
                         <goals>
                             <goal>build</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>tag</id>
-                        <phase>deploy</phase>
+                        <id>tag-image</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>tag</goal>
                         </goals>
@@ -246,7 +246,7 @@
 <!--                        </goals>-->
 <!--                    </execution>-->
                     <execution>
-                        <id>push image</id>
+                        <id>push-image</id>
                         <configuration>
                             <imageName>${env.DOCKER_REGISTRY_IP}:5000/${project.artifactId}</imageName>
                         </configuration>
