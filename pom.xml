@@ -197,7 +197,7 @@
 
                 <configuration>
 
-                    <image>${project.artifactId}</image>
+                    <image>${project.artifactId}-br</image>
                     <newName>${env.DOCKER_REGISTRY_IP}:5000/${project.artifactId}</newName>
 
                     <imageName>${project.artifactId}</imageName>
@@ -231,6 +231,7 @@
                             <goal>tag</goal>
                         </goals>
                         <configuration>
+                            <forceTags>true</forceTags>
                             <newName>${scmBranch}</newName>
                             <newName>${current-version}</newName>
                         </configuration>
