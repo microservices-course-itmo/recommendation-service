@@ -204,6 +204,7 @@
                 </executions>
                 <configuration>
                     <repository>${env.DOCKER_REGISTRY_IP}:5000/${project.artifactId}</repository>
+                    <dockerfile.contextDirectory>.</dockerfile.contextDirectory>
                     <tag>${project.version}</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
