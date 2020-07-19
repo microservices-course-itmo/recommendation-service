@@ -197,7 +197,7 @@
 
                 <configuration>
 
-                    <image>${project.artifactId}-br</image>
+                    <image>${project.artifactId}</image>
                     <newName>${env.DOCKER_REGISTRY_IP}:5000/${project.artifactId}</newName>
 
                     <imageName>${project.artifactId}</imageName>
