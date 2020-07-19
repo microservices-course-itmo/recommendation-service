@@ -219,22 +219,18 @@
                 <executions>
                     <execution>
                         <id>docker image build</id>
-                        <phase>deploy</phase>
+                        <phase>package</phase>
                         <goals>
                             <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>tag</id>
+                        <phase>deploy</phase>
+                        <goals>
                             <goal>tag</goal>
                         </goals>
                     </execution>
-<!--                    <execution>-->
-<!--                        <id>branch tag</id>-->
-<!--                        <configuration>-->
-<!--                            <newName>${scmBranch}</newName>-->
-<!--                        </configuration>-->
-<!--                        <phase>deploy</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>tag</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
 <!--                    <execution>-->
 <!--                        <id>version tag</id>-->
 <!--                        <configuration>-->
