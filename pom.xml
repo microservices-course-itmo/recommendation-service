@@ -201,11 +201,11 @@
                     <newName>${env.DOCKER_REGISTRY_IP}:5000/${project.artifactId}</newName>
 
                     <imageName>${project.artifactId}</imageName>
-                    <forceTags>true</forceTags>
-                    <imageTags>
-                        <imageTag>${scmBranch}</imageTag>
-                        <imageTag>${current-version}</imageTag>
-                    </imageTags>
+<!--                    <forceTags>true</forceTags>-->
+<!--                    <imageTags>-->
+<!--                        <imageTag>${scmBranch}</imageTag>-->
+<!--                        <imageTag>${current-version}</imageTag>-->
+<!--                    </imageTags>-->
                     <dockerDirectory>.</dockerDirectory>
                     <dockerHost>http://${env.DOCKER_IP}:2375</dockerHost>
                     <resources>
@@ -230,6 +230,10 @@
                         <goals>
                             <goal>tag</goal>
                         </goals>
+                        <configuration>
+                            <newName>${scmBranch}</newName>
+                            <newName>${current-version}</newName>
+                        </configuration>
                     </execution>
 <!--                    <execution>-->
 <!--                        <id>version tag</id>-->
