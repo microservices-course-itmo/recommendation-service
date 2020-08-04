@@ -46,7 +46,7 @@ public class EventLoggerBeanPostProcessor implements BeanPostProcessor {
             var logger = LoggerFactory.getLogger(beanClass);
 
             // Inject our logger
-            ReflectionUtils.setField(field, bean, new EventLogger(logger, metrics));
+            ReflectionUtils.setField(field, bean, new EventLogger(logger, metrics)); // todo sukhoa move to common lib
         }
     }
 }

@@ -28,10 +28,12 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class BaseKafkaHandler<MessageType> {
 
+    private static final String THREAD_NAME_PREFIX = "kafka-listener-thread-";
+
     private final String topicName;
     private final KafkaConsumer<String, MessageType> kafkaConsumer;
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final KafkaMessageHandler<MessageType> delegateTo;
+    private final ExecutorService executor;
     @InjectEventLogger
     @SuppressWarnings("unused")
     private EventLogger eventLogger;
@@ -42,6 +44,7 @@ public class BaseKafkaHandler<MessageType> {
         this.topicName = topicName;
         this.kafkaConsumer = kafkaConsumer;
         this.delegateTo = delegateTo;
+        this.executor = Executors.newSingleThreadExecutor(new NamedThreadFactory(THREAD_NAME_PREFIX + topicName));
     }
 
     @PostConstruct
@@ -52,15 +55,15 @@ public class BaseKafkaHandler<MessageType> {
 
     private void pollingMessages() {
         try {
-            //noinspection InfiniteLoopStatement
-            while (true) {
+            while (!Thread.interrupted()) {
                 ConsumerRecords<String, MessageType> consumerRecords = kafkaConsumer.poll(Duration.ofSeconds(5)); // todo sukhoa add parameter poll interval?
                 consumeMessages(consumerRecords);
             }
+            eventLogger.warn(NotableEvents.W_KAFKA_LISTENER_INTERRUPTED, topicName);
         } catch (Exception e) {
             eventLogger.error(NotableEvents.F_KAFKA_CONSUMER_DIED, topicName);
         } finally {
-            close();
+            kafkaConsumer.close();
         }
     }
 
@@ -77,12 +80,12 @@ public class BaseKafkaHandler<MessageType> {
     }
 
     public void close() { // todo sukhoa we should do it before shutting down the app
-        kafkaConsumer.close();
         executor.shutdown();
         try {
             executor.awaitTermination(10, TimeUnit.SECONDS);
         } catch (InterruptedException ignored) {
         }
         executor.shutdownNow();
+        eventLogger.warn(NotableEvents.W_EXECUTOR_SHUT_DOWN, THREAD_NAME_PREFIX + topicName);
     }
 }
