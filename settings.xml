@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd"
-    xmlns="http://maven.apache.org/SETTINGS/1.1.0">
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd"
+          xmlns="http://maven.apache.org/SETTINGS/1.1.0">
   <servers>
     <server>
-      <username>admin</username>
-      <password>{+6Sm85KqIlsHarFKzs9NbkNUJmMvw+WsCihaNMeKHAo=}</password>
+      <username>reader</username>
+      <password>readerpass</password>
       <id>central</id>
     </server>
     <server>
-      <username>admin</username>
-      <password>{+6Sm85KqIlsHarFKzs9NbkNUJmMvw+WsCihaNMeKHAo=}</password>
+      <username>reader</username>
+      <password>readerpass</password>
       <id>snapshots</id>
-    </server>
-    <server>
-      <username>reader</username>
-      <password>readerpass</password>
-      <id>reader-central</id>
-    </server>
-    <server>
-      <username>reader</username>
-      <password>readerpass</password>
-      <id>reader-snapshots</id>
     </server>
   </servers>
   <profiles>
@@ -30,29 +21,15 @@
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-          <id>reader-central</id>
-          <name>libs-release</name>
-          <url>http://77.234.215.138:8081/artifactory/libs-release</url>
-        </repository>
-        <repository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
           <id>central</id>
           <name>libs-release</name>
-          <url>http://77.234.215.138:8081/artifactory/libs-release</url>
-        </repository>
-        <repository>
-          <snapshots />
-          <id>reader-snapshots</id>
-          <name>libs-snapshot</name>
-          <url>http://77.234.215.138:8081/artifactory/libs-snapshot</url>
+          <url>http://77.234.215.138:48082/artifactory/libs-release</url>
         </repository>
         <repository>
           <snapshots />
           <id>snapshots</id>
           <name>libs-snapshot</name>
-          <url>http://77.234.215.138:8081/artifactory/libs-snapshot</url>
+          <url>http://77.234.215.138:48082/artifactory/libs-snapshot</url>
         </repository>
       </repositories>
       <pluginRepositories>
@@ -60,29 +37,15 @@
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-          <id>reader-central</id>
-          <name>libs-release</name>
-          <url>http://77.234.215.138:8081/artifactory/libs-release</url>
-        </pluginRepository>
-        <pluginRepository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
           <id>central</id>
           <name>libs-release</name>
-          <url>http://77.234.215.138:8081/artifactory/libs-release</url>
-        </pluginRepository>
-        <pluginRepository>
-          <snapshots />
-          <id>reader-snapshots</id>
-          <name>libs-snapshot</name>
-          <url>http://77.234.215.138:8081/artifactory/libs-snapshot</url>
+          <url>http://77.234.215.138:48082/artifactory/libs-release</url>
         </pluginRepository>
         <pluginRepository>
           <snapshots />
           <id>snapshots</id>
           <name>libs-snapshot</name>
-          <url>http://77.234.215.138:8081/artifactory/libs-snapshot</url>
+          <url>http://77.234.215.138:48082/artifactory/libs-snapshot</url>
         </pluginRepository>
       </pluginRepositories>
       <id>artifactory</id>

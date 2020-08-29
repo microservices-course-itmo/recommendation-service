@@ -2,7 +2,7 @@ version: '3'
 
 services:
   service:
-    image: test-service:0.1.0-SNAPSHOT
+    image: demo-service:latest
     ports:
       - 8080:8080
     environment:

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wine.to.up</groupId>
-    <artifactId>test-service</artifactId>
+    <artifactId>demo-service</artifactId>
     <version>${current-version}-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -16,7 +16,7 @@
     </parent>
 
     <properties>
-        <current-version>0.1.0</current-version>
+        <current-version>0.1.1</current-version>
         <!-- Нужен для scm -->
         <git.username>andrsuh</git.username>
         <git.repo>service-app</git.repo>
@@ -30,6 +30,7 @@
         <micrometer.version>1.5.2</micrometer.version>
         <simpleclient.version>0.8.1</simpleclient.version>
         <postgres.driver.version>42.2.14</postgres.driver.version>
+        <service.api.version>0.1.0-SNAPSHOT</service.api.version>
 
         <buildnumber-maven-plugin.version>1.4</buildnumber-maven-plugin.version>
         <flyway.version>6.5.1</flyway.version>
@@ -68,12 +69,12 @@
             <version>${kafka-clients.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -132,6 +133,11 @@
             <artifactId>simpleclient_httpserver</artifactId>
             <version>${simpleclient.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.wine.to.up</groupId>
+            <artifactId>demo-service-api</artifactId>
+            <version>${service.api.version}</version>
+        </dependency>
     </dependencies>
 
     <!-- Нужен для buildnumber-maven-plugin -->
@@ -146,18 +152,9 @@
     <distributionManagement>
         <snapshotRepository>
             <id>snapshots</id>
-            <name>f85eb0ecebad-snapshots</name> <!-- Сгенерировано jfrog -->
-            <url>http://${env.JFROG_ARTIFACTORY_IP}:8081/artifactory/libs-snapshot-local</url>
+            <url>http://artifactory:8081/artifactory/libs-snapshot-local</url>
         </snapshotRepository>
     </distributionManagement>
-
-    <!-- Нужен для подключения зависимостей из libs-snapshot-local в jfrog artifactory -->
-    <repositories>
-        <repository>
-            <id>reader-snapshots</id>
-            <url>http://${env.JFROG_ARTIFACTORY_IP}:8081/artifactory/libs-snapshot-local</url>
-        </repository>
-    </repositories>
 
     <build>
         <plugins>
@@ -210,7 +207,7 @@
                 </dependencies>
 
                 <configuration>
-                    <repository>${env.DOCKER_REGISTRY_IP}:5000/${project.artifactId}</repository>
+                    <repository>${env.DOCKER_REPO_HOST}/${project.artifactId}</repository>
                     <tag>${scmBranch}_${current-version}</tag>
                 </configuration>
 
