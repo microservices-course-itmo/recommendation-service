@@ -1,6 +1,6 @@
-package com.wine.to.up.demo.service.repository;
+package com.wine.to.up.notification.service.repository;
 
-import com.wine.to.up.demo.service.domain.entity.Message;
+import com.wine.to.up.notification.service.domain.entity.Message;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

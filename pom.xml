@@ -5,8 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wine.to.up</groupId>
-    <!--    TODO create-service: rename artifact-->
-    <artifactId>demo-service</artifactId>
+    <artifactId>notification-service</artifactId>
     <!--    "current-version" is used for building image and should not include a "SNAPSHOT" word. -->
     <version>${current-version}-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -18,8 +17,7 @@
     </parent>
 
     <properties>
-        <!--        TODO create-service: set version to initial (0.1.0)-->
-        <current-version>0.2.0</current-version>
+        <current-version>0.1.0</current-version>
 
         <lombok.version>1.18.10</lombok.version>
         <modelmapper.version>2.3.5</modelmapper.version>
@@ -27,8 +25,7 @@
         <springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
         <micrometer.version>1.5.2</micrometer.version>
         <postgres.driver.version>42.2.14</postgres.driver.version>
-        <!--        TODO create-service: replace-->
-        <demo.service.api.version>0.3.0-SNAPSHOT</demo.service.api.version>
+        <notification.service.api.version>0.1.0-SNAPSHOT</notification.service.api.version>
         <service.commonlib.version>0.2.0-SNAPSHOT</service.commonlib.version>
 
         <buildnumber-maven-plugin.version>1.4</buildnumber-maven-plugin.version>
@@ -122,11 +119,10 @@
         </dependency>
 
         <!--Our custom artifacts-->
-        <!--        TODO create-service: replace-->
         <dependency>
             <groupId>com.wine.to.up</groupId>
-            <artifactId>demo-service-api</artifactId>
-            <version>${demo.service.api.version}</version>
+            <artifactId>notification-service-api</artifactId>
+            <version>${notification.service.api.version}</version>
         </dependency>
     </dependencies>
 

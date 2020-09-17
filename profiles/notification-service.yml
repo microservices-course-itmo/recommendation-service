@@ -1,10 +1,8 @@
-#TODO create-service: rename file
 version: '3'
 
 services:
   service:
-    #TODO create-service: rename
-    image: demo-service:latest
+    image: notification-service:0.1.0-SNAPSHOT
     ports:
       - 8080:8080
     environment:

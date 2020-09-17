@@ -1,4 +1,4 @@
-package com.wine.to.up.demo.service;
+package com.wine.to.up.notification.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

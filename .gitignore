@@ -4,11 +4,13 @@ gradle/
 gradlew*
 *.gradle
 .asscache
+.factorypath
 .project
 .settings
 .bin/
 .idea/
 .tmp/
+.vscode/
 .gradle
 *.class
 *.iml
