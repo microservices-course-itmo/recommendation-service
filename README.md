@@ -1,2 +1,2 @@
-# Recomendation Service  
+# Recommendation Service  
 Рекомендую поставить звездочку.
