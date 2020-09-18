@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wine.to.up</groupId>
-    <artifactId>notification-service</artifactId>
+    <artifactId>recomendation-service</artifactId>
     <!--    "current-version" is used for building image and should not include a "SNAPSHOT" word. -->
     <version>${current-version}-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -25,7 +25,7 @@
         <springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
         <micrometer.version>1.5.2</micrometer.version>
         <postgres.driver.version>42.2.14</postgres.driver.version>
-        <notification.service.api.version>0.1.0-SNAPSHOT</notification.service.api.version>
+        <recomendation.service.api.version>0.1.0-SNAPSHOT</recomendation.service.api.version>
         <service.commonlib.version>0.2.0-SNAPSHOT</service.commonlib.version>
 
         <buildnumber-maven-plugin.version>1.4</buildnumber-maven-plugin.version>
@@ -121,8 +121,8 @@
         <!--Our custom artifacts-->
         <dependency>
             <groupId>com.wine.to.up</groupId>
-            <artifactId>notification-service-api</artifactId>
-            <version>${notification.service.api.version}</version>
+            <artifactId>recomendation-service-api</artifactId>
+            <version>${recomendation.service.api.version}</version>
         </dependency>
     </dependencies>
 

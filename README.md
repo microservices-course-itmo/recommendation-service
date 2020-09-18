@@ -1,2 +1,2 @@
-# Notification Service  
-Однажды здесь будет что-то полезное.
+# Recomendation Service  
+Рекомендую поставить звездочку.
