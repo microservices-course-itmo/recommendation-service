@@ -1,6 +1,6 @@
-package com.wine.to.up.notification.service.controller;
+package com.wine.to.up.recommendation.service.controller;
 
-import com.wine.to.up.notification.service.repository.MessageRepository;
+import com.wine.to.up.recommendation.service.repository.MessageRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;

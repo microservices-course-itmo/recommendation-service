@@ -1,4 +1,4 @@
-package com.wine.to.up.notification.service.configuration;
+package com.wine.to.up.recommendation.service.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;

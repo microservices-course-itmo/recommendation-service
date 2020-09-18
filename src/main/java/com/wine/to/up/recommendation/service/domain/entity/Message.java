@@ -1,4 +1,4 @@
-package com.wine.to.up.notification.service.domain.entity;
+package com.wine.to.up.recommendation.service.domain.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

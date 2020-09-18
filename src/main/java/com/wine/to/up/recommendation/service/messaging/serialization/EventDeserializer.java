@@ -1,4 +1,4 @@
-package com.wine.to.up.notification.service.messaging.serialization;
+package com.wine.to.up.recommendation.service.messaging.serialization;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.wine.to.up.notification.service.api.message.KafkaMessageSentEventOuterClass.KafkaMessageSentEvent;

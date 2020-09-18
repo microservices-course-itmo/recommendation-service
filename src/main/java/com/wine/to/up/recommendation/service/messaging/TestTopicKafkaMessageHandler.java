@@ -1,9 +1,9 @@
-package com.wine.to.up.notification.service.messaging;
+package com.wine.to.up.recommendation.service.messaging;
 
 import com.wine.to.up.commonlib.messaging.KafkaMessageHandler;
 import com.wine.to.up.notification.service.api.message.KafkaMessageSentEventOuterClass.KafkaMessageSentEvent;
-import com.wine.to.up.notification.service.domain.entity.Message;
-import com.wine.to.up.notification.service.repository.MessageRepository;
+import com.wine.to.up.recommendation.service.domain.entity.Message;
+import com.wine.to.up.recommendation.service.repository.MessageRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

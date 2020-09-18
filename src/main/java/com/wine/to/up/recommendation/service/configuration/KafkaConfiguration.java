@@ -1,14 +1,14 @@
-package com.wine.to.up.notification.service.configuration;
+package com.wine.to.up.recommendation.service.configuration;
 
 import com.wine.to.up.commonlib.messaging.BaseKafkaHandler;
 import com.wine.to.up.commonlib.messaging.KafkaMessageHandler;
 import com.wine.to.up.commonlib.messaging.KafkaMessageSender;
 import com.wine.to.up.notification.service.api.NotificationServiceApiProperties;
 import com.wine.to.up.notification.service.api.message.KafkaMessageSentEventOuterClass.KafkaMessageSentEvent;
-import com.wine.to.up.notification.service.components.NotificationServiceMetricsCollector;
-import com.wine.to.up.notification.service.messaging.TestTopicKafkaMessageHandler;
-import com.wine.to.up.notification.service.messaging.serialization.EventDeserializer;
-import com.wine.to.up.notification.service.messaging.serialization.EventSerializer;
+import com.wine.to.up.recommendation.service.components.RecommendationServiceMetricsCollector;
+import com.wine.to.up.recommendation.service.messaging.TestTopicKafkaMessageHandler;
+import com.wine.to.up.recommendation.service.messaging.serialization.EventDeserializer;
+import com.wine.to.up.recommendation.service.messaging.serialization.EventSerializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.consumer.OffsetResetStrategy;
@@ -106,7 +106,7 @@ public class KafkaConfiguration {
     @Bean
     KafkaMessageSender<KafkaMessageSentEvent> notificationTopicKafkaMessageSender(Properties producerProperties,
                                                                                   NotificationServiceApiProperties notificationServiceApiProperties,
-                                                                                  NotificationServiceMetricsCollector metricsCollector) {
+                                                                                  RecommendationServiceMetricsCollector metricsCollector) {
         // set appropriate serializer for value
         producerProperties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, EventSerializer.class.getName());
 

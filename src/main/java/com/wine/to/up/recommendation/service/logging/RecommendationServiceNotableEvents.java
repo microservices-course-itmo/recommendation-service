@@ -1,14 +1,15 @@
-package com.wine.to.up.notification.service.logging;
+package com.wine.to.up.recommendation.service.logging;
 
 import com.wine.to.up.commonlib.logging.NotableEvent;
 
-public enum NotificationServiceNotableEvents implements NotableEvent {
+
+public enum RecommendationServiceNotableEvents implements NotableEvent {
     NOTIFICATION_EVENT("Something happened"),
     ANOTHER_NOTIFICATION_EVENT("Something else happened");
 
     private final String template;
 
-    NotificationServiceNotableEvents(String template) {
+    RecommendationServiceNotableEvents(String template) {
         this.template = template;
     }
 
