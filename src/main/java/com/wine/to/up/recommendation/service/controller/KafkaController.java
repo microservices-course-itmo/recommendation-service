@@ -2,9 +2,9 @@ package com.wine.to.up.recommendation.service.controller;
 
 import com.google.protobuf.ByteString;
 import com.wine.to.up.commonlib.messaging.KafkaMessageSender;
-import com.wine.to.up.notification.service.api.dto.NotificationServiceMessage;
-import com.wine.to.up.notification.service.api.message.KafkaMessageHeaderOuterClass;
-import com.wine.to.up.notification.service.api.message.KafkaMessageSentEventOuterClass.KafkaMessageSentEvent;
+import com.wine.to.up.recommendation.service.api.dto.RecommendationServiceMessage;
+import com.wine.to.up.recommendation.service.api.message.KafkaMessageHeaderOuterClass;
+import com.wine.to.up.recommendation.service.api.message.KafkaMessageSentEventOuterClass.KafkaMessageSentEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,15 +52,14 @@ public class KafkaController {
      */
     @PostMapping(value = "/send")
     public void sendMessage(@RequestBody String message) {
-        sendMessageWithHeaders(new NotificationServiceMessage(Collections.emptyMap(), message));
+        sendMessageWithHeaders(new RecommendationServiceMessage(Collections.emptyMap(), message));
     }
 
     /**
-     * See {@link #sendMessage(String)}
-     * Sends message with headers
+     * See {@link #sendMessage(String)} Sends message with headers
      */
     @PostMapping(value = "/send/headers")
-    public void sendMessageWithHeaders(@RequestBody NotificationServiceMessage message) {
+    public void sendMessageWithHeaders(@RequestBody RecommendationServiceMessage message) {
         AtomicInteger counter = new AtomicInteger(0);
 
         KafkaMessageSentEvent event = KafkaMessageSentEvent.newBuilder()

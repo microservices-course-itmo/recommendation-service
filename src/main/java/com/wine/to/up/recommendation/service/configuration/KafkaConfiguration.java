@@ -3,8 +3,8 @@ package com.wine.to.up.recommendation.service.configuration;
 import com.wine.to.up.commonlib.messaging.BaseKafkaHandler;
 import com.wine.to.up.commonlib.messaging.KafkaMessageHandler;
 import com.wine.to.up.commonlib.messaging.KafkaMessageSender;
-import com.wine.to.up.notification.service.api.NotificationServiceApiProperties;
-import com.wine.to.up.notification.service.api.message.KafkaMessageSentEventOuterClass.KafkaMessageSentEvent;
+import com.wine.to.up.recommendation.service.api.RecommendationServiceApiProperties;
+import com.wine.to.up.recommendation.service.api.message.KafkaMessageSentEventOuterClass.KafkaMessageSentEvent;
 import com.wine.to.up.recommendation.service.components.RecommendationServiceMetricsCollector;
 import com.wine.to.up.recommendation.service.messaging.TestTopicKafkaMessageHandler;
 import com.wine.to.up.recommendation.service.messaging.serialization.EventDeserializer;
@@ -83,33 +83,34 @@ public class KafkaConfiguration {
      * @param handler            which is responsible for handling messages from this topic
      */
     @Bean
-    BaseKafkaHandler<KafkaMessageSentEvent> notificationTopicMessagesHandler(Properties consumerProperties,
-                                                                             NotificationServiceApiProperties notificationServiceApiProperties,
-                                                                             TestTopicKafkaMessageHandler handler) {
+    BaseKafkaHandler<KafkaMessageSentEvent> recommendationTopicMessagesHandler(Properties consumerProperties,
+                                                                               RecommendationServiceApiProperties recommendationServiceApiProperties,
+                                                                               TestTopicKafkaMessageHandler handler) {
         // set appropriate deserializer for value
         consumerProperties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, EventDeserializer.class.getName());
 
         // bind consumer with topic name and with appropriate handler
-        return new BaseKafkaHandler<>(notificationServiceApiProperties.getMessageSentEventsTopicName(), new KafkaConsumer<>(consumerProperties), handler);
+        return new BaseKafkaHandler<>(recommendationServiceApiProperties.getMessageSentEventsTopicName(), new KafkaConsumer<>(consumerProperties), handler);
     }
 
     /**
      * Creates sender based on general properties. It helps to send single message to designated topic.
      * <p>
-     * Uses custom serializer as the messages within single topic should be the same type. And
-     * the messages in different topics can have different types and require different serializers
+     * Uses custom serializer as the messages within single topic should be the same type. And the messages in different topics can have
+     * different types and require different serializers
      *
-     * @param producerProperties       is the general producer properties. {@link #producerProperties()}
-     * @param notificationServiceApiProperties class containing the values of the given service's API properties (in this particular case topic name)
-     * @param metricsCollector         class encapsulating the logic of the metrics collecting and publishing
+     * @param producerProperties                 is the general producer properties. {@link #producerProperties()}
+     * @param recommendationServiceApiProperties class containing the values of the given service's API properties (in this particular case
+     *                                           topic name)
+     * @param metricsCollector                   class encapsulating the logic of the metrics collecting and publishing
      */
     @Bean
-    KafkaMessageSender<KafkaMessageSentEvent> notificationTopicKafkaMessageSender(Properties producerProperties,
-                                                                                  NotificationServiceApiProperties notificationServiceApiProperties,
-                                                                                  RecommendationServiceMetricsCollector metricsCollector) {
+    KafkaMessageSender<KafkaMessageSentEvent> recommendationTopicKafkaMessageSender(Properties producerProperties,
+                                                                                    RecommendationServiceApiProperties recommendationServiceApiProperties,
+                                                                                    RecommendationServiceMetricsCollector metricsCollector) {
         // set appropriate serializer for value
         producerProperties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, EventSerializer.class.getName());
 
-        return new KafkaMessageSender<>(new KafkaProducer<>(producerProperties), notificationServiceApiProperties.getMessageSentEventsTopicName(), metricsCollector);
+        return new KafkaMessageSender<>(new KafkaProducer<>(producerProperties), recommendationServiceApiProperties.getMessageSentEventsTopicName(), metricsCollector);
     }
 }

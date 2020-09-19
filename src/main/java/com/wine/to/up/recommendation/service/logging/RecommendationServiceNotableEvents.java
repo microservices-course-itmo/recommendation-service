@@ -4,8 +4,8 @@ import com.wine.to.up.commonlib.logging.NotableEvent;
 
 
 public enum RecommendationServiceNotableEvents implements NotableEvent {
-    NOTIFICATION_EVENT("Something happened"),
-    ANOTHER_NOTIFICATION_EVENT("Something else happened");
+    RECOMMENDATION_EVENT("Something happened"),
+    ANOTHER_RECOMMENDATION_EVENT("Something else happened");
 
     private final String template;
 
