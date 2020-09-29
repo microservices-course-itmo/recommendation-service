@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+
 @RestController
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
@@ -12,7 +14,7 @@ public class RecommendationController {
 
     @GetMapping(path = "/recommendation/{userId:[\\d]+}")
     public RecommendationResponse getByRequest(@PathVariable long userId) {
-        return RecommendationResponse.builder().id(userId).build();
+        return RecommendationResponse.builder().recommendedIds(Arrays.asList(1L, 2L)).build();
     }
 
 }
