@@ -4,7 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @Entity
 @Table(name = "recommendation")
