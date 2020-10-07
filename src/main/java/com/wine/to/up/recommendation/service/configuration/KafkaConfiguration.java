@@ -6,7 +6,6 @@ import com.wine.to.up.commonlib.messaging.KafkaMessageSender;
 import com.wine.to.up.recommendation.service.api.RecommendationServiceApiProperties;
 import com.wine.to.up.recommendation.service.api.message.KafkaMessageSentEventOuterClass.KafkaMessageSentEvent;
 import com.wine.to.up.recommendation.service.components.RecommendationServiceMetricsCollector;
-import com.wine.to.up.recommendation.service.messaging.TestTopicKafkaMessageHandler;
 import com.wine.to.up.recommendation.service.messaging.serialization.EventDeserializer;
 import com.wine.to.up.recommendation.service.messaging.serialization.EventSerializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -67,7 +66,7 @@ public class KafkaConfiguration {
     }
 
 
-    /**
+   /* /**
      * Creates consumer based on general properties.
      * <p>
      * Uses custom deserializer as the messages within single topic should be the same type. And
@@ -82,16 +81,16 @@ public class KafkaConfiguration {
      * @param consumerProperties is the general consumer properties. {@link #consumerProperties()}
      * @param handler            which is responsible for handling messages from this topic
      */
-    @Bean
+    /*@Bean
     BaseKafkaHandler<KafkaMessageSentEvent> recommendationTopicMessagesHandler(Properties consumerProperties,
                                                                                RecommendationServiceApiProperties recommendationServiceApiProperties,
-                                                                               TestTopicKafkaMessageHandler handler) {
+                                                                               TestTopicKafkaMessageHandler handler) {*/
         // set appropriate deserializer for value
-        consumerProperties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, EventDeserializer.class.getName());
+        //consumerProperties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, EventDeserializer.class.getName());
 
         // bind consumer with topic name and with appropriate handler
-        return new BaseKafkaHandler<>(recommendationServiceApiProperties.getMessageSentEventsTopicName(), new KafkaConsumer<>(consumerProperties), handler);
-    }
+        /*return new BaseKafkaHandler<>(recommendationServiceApiProperties.getMessageSentEventsTopicName(), new KafkaConsumer<>(consumerProperties), handler);
+    }*/
 
     /**
      * Creates sender based on general properties. It helps to send single message to designated topic.
