@@ -9,13 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.UUID;
 
-@Entity
-@Table(name = "messages")
+
 @Setter
 @Getter
 @NoArgsConstructor
 public class Message {
-    @Id
+
     private UUID id = UUID.randomUUID();
     private String content;
 
